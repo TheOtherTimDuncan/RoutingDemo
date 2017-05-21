@@ -5,9 +5,11 @@ using System.Web.Mvc;
 
 namespace RoutingDemo.Controllers
 {
-    [Route]
+    [Route(HomeController.Route)]
     public class HomeController : Controller
     {
+        public const string Route = "Home";
+
         [Route("~/")]
         public ActionResult Index()
         {

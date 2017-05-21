@@ -5,7 +5,7 @@ using System.Web.Mvc;
 
 namespace RoutingDemo.Controllers
 {
-    [Route(HomeController.Route)]
+    [RoutePrefix(HomeController.Route)]
     public class HomeController : Controller
     {
         public const string Route = "Home";
@@ -16,7 +16,7 @@ namespace RoutingDemo.Controllers
             return View();
         }
 
-        [Route("About")]
+        [Route("~/About")]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -24,12 +24,21 @@ namespace RoutingDemo.Controllers
             return View();
         }
 
-        [Route("Contact")]
-        public ActionResult Contact()
+        [Route("~/Contact")]
+        public ActionResult Contact(ContactQuery query)
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = $"Your contact page for {query.ContactName}.";
 
             return View();
+        }
+    }
+
+    public class ContactQuery
+    {
+        public string ContactName
+        {
+            get;
+            set;
         }
     }
 }

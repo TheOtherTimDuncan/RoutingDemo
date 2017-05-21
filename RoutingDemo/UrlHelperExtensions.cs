@@ -18,9 +18,12 @@ namespace RoutingDemo
             return urlHelper.Action(nameof(HomeController.About), HomeController.Route);
         }
 
-        public static string HomeContactAction(this UrlHelper urlHelper)
+        public static string HomeContactAction(this UrlHelper urlHelper, string contactName)
         {
-            return urlHelper.Action(nameof(HomeController.Contact), HomeController.Route);
+            return urlHelper.Action(nameof(HomeController.Contact), HomeController.Route, new ContactQuery()
+            {
+                ContactName = contactName
+            });
         }
     }
 }
